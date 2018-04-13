@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+			"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.UserMapper">
+	<resultMap id="BaseResultMap" type="com.example.demo.entity.User" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="name" property="name" jdbcType="VARCHAR" />
+        <result column="sex" property="sex" jdbcType="VARCHAR" />
+        <result column="age" property="age" jdbcType="INTEGER" />
+        <result column="address" property="address" jdbcType="VARCHAR" />
+        <result column="birthday" property="birthday" />
+        <result column="email" property="email" jdbcType="INTEGER" />
+        <result column="mobile" property="mobile" jdbcType="VARCHAR" />
+        <result column="remark" property="remark" jdbcType="VARCHAR" />
+    </resultMap>
+	<select id="getUsers" resultMap="BaseResultMap">
+		select * from user
+	</select>
+	
+	<select id="getUser" resultType="com.example.demo.entity.User" parameterType="Integer">
+		select * from user where id=#{id}
+	</select>
+	
+	<insert id="addUser" parameterType="com.example.demo.entity.User">
+		<!-- <selectKey resultType="java.lang.Long" order="AFTER" keyProperty="id">
+          SELECT LAST_INSERT_ID()
+      	</selectKey> -->
+		insert into user(name,sex,age,address,birthday,email,mobile,remark)
+		values(#{name},#{sex},#{age},#{address},#{birthday},#{email},#{mobile},#{remark})
+	</insert>
+	
+	<delete id="deleteUser" parameterType="Integer">
+		delete from user where id=#{id}
+	</delete>
+	
+	<update id="updateUser" parameterType="com.example.demo.entity.User">
+		UPDATE user  
+            SET user.name = #{name},   
+                user.sex = #{sex},  
+                user.age = #{age},  
+                user.address = #{address},
+                user.birthday = #{birthday},   
+                user.email = #{email},  
+                user.mobile = #{mobile},  
+                user.remark = #{remark}   
+         WHERE user.id = #{id};   
+	</update>
+</mapper>

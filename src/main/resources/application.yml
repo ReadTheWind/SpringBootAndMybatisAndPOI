@@ -1,0 +1,22 @@
+server:
+  port: 8080
+spring:
+  datasource:
+     url: jdbc:mysql://127.0.0.1:3306/test?autoReconnect=true&useSSL=false
+     username: root
+     password: 123456
+     driver-class-name: com.mysql.jdbc.Driver
+     # 使用druid数据源
+     type: com.alibaba.druid.pool.DruidDataSource
+  #jsp支持
+  mvc:
+    view:
+      prefix: /WEB-INF/jsp/
+      suffix: .jsp
+  #关闭默认模板引擎
+  thymeleaf:
+    cache: false
+    enabled: false
+mybatis:
+  mapper-locations: classpath:mybatis/mapper/*.xml
+  config-location: classpath:mybatis/mybatis-config.xml
