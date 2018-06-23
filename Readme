@@ -1,0 +1,5 @@
+该项目为架构为springboot+mybatis
+主要功能
+  实现excel格式（兼容xls,xlsx）的导入导出功能
+  实现word格式(兼容doc,docs)的文件的导入导出功能
+  实现pdf格式文件的导入导出功能
